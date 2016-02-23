@@ -1,8 +1,7 @@
 ###Chat Heads
-Chat Heads uses RealSense to overlay background segmented (BGS) player images on a 3D scene or video playback in a multiplayer scenario. 
-The goal is twofold: 
-(i) to demonstrate a RealSense use-case that can improve the player/spectator e-sport experience 
-(ii) serve as an example implementation to help understand the various pieces (realsense, network, media), their interactions and performance criteria
+Intel RealSense Technology can be used to improve the e-sports experience for both players and spectators by allowing them to see each other on-screen during the game. Using background segmented video (BGS), players’ “floating heads” can be overlaid on top of a game using less screen real-estate than full widescreen video and graphics can be displayed behind them.
+
+Chat Heads is a sample that will help you understand the various pieces in the implementation (using the Intel RealSense SDK for background segmentation, networking, video compression and decompression), the social interaction, and the performance of this RealSense use case. The code in this sample is written in C++ and uses DirectX*.
 
 For more info, please checkout https://software.intel.com/en-us/articles/chat-heads-and-intel-realsense-sdk-background-segmentation-boosts-esport-experience
 
@@ -16,56 +15,52 @@ For more info, please checkout https://software.intel.com/en-us/articles/chat-he
 - IMGui for UI
  
 ####Building the sample:
-Install the RealSense SDK prior to building the sample (include path for header depends on RSSDK_DIR env variable)
+Install the [RealSense SDK R5 or greater] (https://software.intel.com/en-us/intel-realsense-sdk/download) prior to building the sample 
 
 ####Running the sample:
 Install the OpenAL runtime and RealSense DCM (depth camera manager) before running the sample.
 There are no command line arguments. Just start the .exe and the UI should be self-explanatory.
-The sample has been tested on Windows 8.1 and 10 systems with an embedded and external RealSense camera.
+
+The sample has been tested on Windows 8.1 and 10 with both embedded and external (usb) RealSense cameras.
 
 ---
 ####Project structure:
-ChatheadsNativePOC\ contains windowsMain.cpp, the sample (ChatHeads.cpp/h), RealSense wrapper (RealsenseMgr.cpp/h) and Raknet wrapper (NetworkLayer.cpp/h)
+**ChatheadsNativePOC\** contains windowsMain.cpp, the sample (ChatHeads.cpp/h), RealSense wrapper (RealsenseMgr.cpp/h) and Raknet wrapper (NetworkLayer.cpp/h)
 
-CPUTDX\ houses our in-house 3D game engine framework
+**CPUTDX\** houses our in-house 3D game engine framework
 
-VideoStreaming\ has the encoder and decoder logic, and uses Microsoft's WMF
+**VideoStreaming\** has the encoder and decoder logic, and uses Microsoft's WMF
 
-Imgui\ is the UI implementation
+**Imgui\** is the UI implementation
 
-Media\ contains the video clips, shader and other art assets
+**Media\** contains the video clips, shader and other art assets
 
-TheoraPlayer\ contains the header and library files for LibTheoraPlayer and associated libraries
+**TheoraPlayer\** contains the header and library files for LibTheoraPlayer and associated libraries
 
-Raknet\ contains the header and library files for Raknet
+**Raknet\** contains the header and library files for Raknet
 
-itt\ contains the header and library files for libittnotify
+**itt\** contains the header and library files for libittnotify
 
 
 ####Code browsing pointers:
+Application code is in ChatHeads.h/cpp
+	
+	void RenderChatheads(CPUTRenderParameters& renderParams);
+	void UpdateRemoteChatheadBuffer(NetMsgVideoUpdate *pMsg);
+	
 RealSense stuff is in RealsenseMgr.h/cpp; Important functions include:
 
 	bool PreInit();
-	
 	bool Init();
-       	
-    void Shutdown();
-       	
+     	void Shutdown();
 	DWORD RSThreadUpdate();
 
 
 Network wrapper over Raknet is in NetworkLayer.h/cpp
 	
 	static DWORD WINAPI NetworkThread(LPVOID lpParam);
-       	
 	bool SendVideoData(NetMsgVideoUpdate& msg, bool broadcast);
-       	
 	static void ProcessVideoUpdateMsg(NetworkLayer *pNet, RakNet::Packet *pPacket);
-
-Sample code is in ChatHeads.h/cpp
-	
-	void RenderChatheads(CPUTRenderParameters& renderParams);
-
 
 Media code is in EncodeTransform.h/cpp and DecodeTransform.h/cpp
 
