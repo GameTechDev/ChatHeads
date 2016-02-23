@@ -1,0 +1,1 @@
+Rebuilt the debug libtheoraplayer.dll/lib's for VS2013 and VS2015. There were runtime expections when using the 2013 debug dll with 2015 because the 2013 debug runtime wasn't linked (or sth like that..).

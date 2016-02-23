@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="CPUT">
+      <UniqueIdentifier>{812C837C-6D63-840D-1650-6A100266000F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="middleware">
+      <UniqueIdentifier>{A3A20214-8F5A-4461-F861-1DBDE438DF51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="middleware\DirectXTex">
+      <UniqueIdentifier>{164D0A54-82B9-C54E-4BAD-5DACB7D8E7B6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="middleware\stb">
+      <UniqueIdentifier>{7BFA24C4-67C8-18CA-505C-89F03CC9F42E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CPUT.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTAnimation.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTAssetLibrary.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTAssetLibrary.hpp">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTAssetSet.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTBuffer.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTButton.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTCallbackHandler.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTCamera.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTCheckbox.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTConfigBlock.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTControl.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTCrossPlatform.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTDropdown.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTEventHandler.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTFont.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTFrustum.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTGPUTimer.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTGuiController.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTInputLayoutCache.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTITTTaskMarker.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTLight.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTMaterial.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTMath.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTMesh.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTModel.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTNullNode.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTOSServices.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTParser.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTPerfTaskMarker.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTRefCount.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTRenderNode.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTRenderParams.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTRenderStateBlock.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTRenderTarget.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTResource.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTScene.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTSkeleton.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTSlider.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTSprite.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTText.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTTexture.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTTimer.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CPUTWindow.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="middleware\stb\stb_image.h">
+      <Filter>middleware\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Extras\DirectXTex\DDSTextureLoader\DDSTextureLoader.h">
+      <Filter>middleware\DirectXTex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Extras\DirectXTex\ScreenGrab\ScreenGrab.h">
+      <Filter>middleware\DirectXTex</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUT_DX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTAssetLibraryDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTBufferDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTComputeShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTDomainShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTGeometryShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTGPUTimerDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTGuiControllerDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTHullShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTInputLayoutCacheDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTMaterialDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTMeshDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTPixelShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTPostProcess.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTRenderStateBlockDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTRenderStateMapsDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTTextureDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+    <ClInclude Include="include\directx\CPUTVertexShaderDX11.h">
+      <Filter>CPUT</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\CPUTAnimation.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTAssetLibrary.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTAssetSet.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTButton.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTCamera.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTCheckbox.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTConfigBlock.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTControl.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTDropdown.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTFont.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTFrustum.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTGuiController.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTITTTaskMarker.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTLight.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTMaterial.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTMesh.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTModel.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTNullNode.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTParser.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTPerfTaskMarker.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTRenderNode.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTRenderStateBlock.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTScene.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTSkeleton.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTSlider.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTSprite.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTText.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CPUTTexture.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\CPUTOSServicesWin.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\CPUTTimerWin.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\windows\CPUTWindowWin.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="middleware\stb\stb_image.c">
+      <Filter>middleware\stb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extras\DirectXTex\DDSTextureLoader\DDSTextureLoader.cpp">
+      <Filter>middleware\DirectXTex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Extras\DirectXTex\ScreenGrab\ScreenGrab.cpp">
+      <Filter>middleware\DirectXTex</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUT_DX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTAssetLibraryDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTBufferDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTComputeShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTDomainShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTGeometryShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTGPUTimerDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTGuiControllerDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTHullShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTInputLayoutCacheDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTMaterialDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTMeshDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTPixelShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTPostProcess.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTRenderStateBlockDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTRenderTarget.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTTextureDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+    <ClCompile Include="source\directx\CPUTVertexShaderDX11.cpp">
+      <Filter>CPUT</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+#define USE_NORMALMAP 1
+#define ENABLE_CLIP 1
+
+diffuse =  texture( name="texture_DM", uv=uv0 )
+specularTmp =  texture( name="texture_SM", uv=uv0 )
+specularity =  texture( name="texture_ST", uv=uv0 ).r * 128.0 + 4.0
+normals =  texture( name="texture_NM", uv=uv0 ) 
+emissiveTmp = texture( name="texture_EM", uv=uv0 )
+emissive = (emissiveTmp * 0.0)
+specular = (specularTmp * 5.0)
+ambient = diffuse
+alpha = diffuse.aaaa
+clipThreshold = (0.5, 0.5, 0.5, 0.5)

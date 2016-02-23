@@ -1,0 +1,2 @@
+diffuse = (1, 0, 0)
+ambient = diffuse

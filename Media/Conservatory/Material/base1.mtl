@@ -1,0 +1,20 @@
+[material0]
+cbPerModelValues = $cbPerModelValues
+cbPerFrameValues = $cbPerFrameValues
+_Shadow = $shadow_depth
+texture_DM = stoneTile_DM.dds
+texture_SM = stoneTile_SM.dds
+texture_ST = stoneTile_ST.dds
+texture_NM = stoneTile_NM.dds
+texture_AO = conservatory_AO.dds
+texture_NMsRGB=FALSE
+VertexShaderFile    = base.fx
+VertexShaderMain    = VSMain
+VertexShaderProfile = vs_4_0
+PixelShaderFile     = base.fx
+PixelShaderMain     = PSMain
+PixelShaderProfile  = ps_4_0
+RenderStateFile     = %Default.rs
+
+VertexShaderFileOGL_1 = base.glsl
+FragmentShaderFileOGL_1 = base.glsl

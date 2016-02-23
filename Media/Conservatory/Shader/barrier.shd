@@ -1,0 +1,7 @@
+#define USE_NORMALMAP
+#define UV_LAYER_1
+diffuse = texture( name="texture_DM", uv=uv1 * 1.0 )
+normals =  texture( name="texture_NM", uv=uv0 * 5.0 )
+ambient = diffuse
+specularity = (8.0)
+specular = (0.1, 0.1, 0.1)

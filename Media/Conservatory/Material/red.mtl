@@ -1,0 +1,14 @@
+[material0]
+cbPerModelValues = $cbPerModelValues
+cbPerFrameValues = $cbPerFrameValues
+_Shadow = $shadow_depth
+VertexShaderFile    = red.fx
+VertexShaderMain    = VSMainNoTexture
+VertexShaderProfile = vs_4_0
+PixelShaderFile     = red.fx
+PixelShaderMain     = PSMainNoTexture
+PixelShaderProfile  = ps_4_0
+RenderStateFile     = %Default.rs
+
+VertexShaderFileOGL_1 = red.glsl
+FragmentShaderFileOGL_1 = red.glsl

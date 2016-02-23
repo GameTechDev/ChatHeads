@@ -1,0 +1,1 @@
+-fbx:barrier_01.fbx -outputdir:../CPRT/barrier_01 -overwritematerials:- 

@@ -1,0 +1,9 @@
+#define UV_LAYER_1
+diffuse =  texture( name="texture_DM", uv=uv0 )
+specularTmp =  texture( name="texture_SM", uv=uv0 )
+ambientOcc =  texture( name="texture_AO", uv=uv1 )
+specular = texture( name="texture_SM", uv=uv0 )
+specularity = 128.0
+ambient = (diffuse * ambientOcc) * 5.0
+alpha = diffuse.aaaa
+clipThreshold = (0.35, 0.35, 0.35, 0.35)

@@ -1,0 +1,18 @@
+[material0]
+cbPerModelValues = $cbPerModelValues
+cbPerFrameValues = $cbPerFrameValues
+_Shadow = $shadow_depth
+texture_DM = conservatoryTile_DM.dds
+texture_NM = stoneTile_NM.dds
+texture_NMsRGB=FALSE
+VertexShaderFile    = conservatoryTile_r05.fx
+VertexShaderMain    = VSMain
+VertexShaderProfile = vs_4_0
+PixelShaderFile     = conservatoryTile_r10.fx
+PixelShaderMain     = PSMain
+PixelShaderProfile  = ps_4_0
+RenderStateFile     = %Default.rs
+
+VertexShaderFileOGL_1 = conservatoryTile_r05.glsl
+FragmentShaderFileOGL_1 = conservatoryTile_r05.glsl
+

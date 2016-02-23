@@ -1,0 +1,16 @@
+// Created with FBXConvert.exe: Wed Jul 23 16:40:40 2014
+[node 0]
+type = model
+name = barrier
+parent = -1
+matrixRow0 = 1 0 -0 0
+matrixRow1 = -0 1 -0 0
+matrixRow2 = 0 0 1 0
+matrixRow3 = 0 0 -0 1
+scale = 1 1 1
+rotation = -0 0 0
+position = 0 0 -0
+BoundingBoxCenter = 0 2.150042057037354 -0 
+BoundingBoxHalf = 45 2.150042057037354 45 
+meshcount = 1
+material0 = barrier1

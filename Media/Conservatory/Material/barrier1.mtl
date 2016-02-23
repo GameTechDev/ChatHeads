@@ -1,0 +1,18 @@
+[material0]
+cbPerModelValues = $cbPerModelValues
+cbPerFrameValues = $cbPerFrameValues
+_Shadow = $shadow_depth
+texture_DM = barrier_DM.dds
+texture_NM = stoneTile_NM.dds
+texture_NMsRGB=FALSE
+VertexShaderFile    = barrier.fx
+VertexShaderMain    = VSMain
+VertexShaderProfile = vs_4_0
+PixelShaderFile     = barrier.fx
+PixelShaderMain     = PSMain
+PixelShaderProfile  = ps_4_0
+
+VertexShaderFileOGL_1 = barrier.glsl
+FragmentShaderFileOGL_1 = barrier.glsl
+
+RenderStateFile     = %Default.rs
