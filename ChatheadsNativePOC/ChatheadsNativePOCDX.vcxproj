@@ -209,11 +209,11 @@
   <ItemGroup>
     <ClInclude Include="NetworkLayer.h" />
     <ClInclude Include="NetworkMsg.h" />
-    <ClInclude Include="Profile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RealsenseMgr.h" />
     <ClInclude Include="ChatHeads.h" />
     <ClInclude Include="SetThreadName.h" />
+    <ClInclude Include="SystemMetrics.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CPUT\CPUTDX.vcxproj">

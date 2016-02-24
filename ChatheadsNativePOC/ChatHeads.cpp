@@ -1122,9 +1122,10 @@ void ChatHeads::PostStartUI()
 			mRSMgr.PauseBGS(mOptions.bPauseBGS);
 
 #if PXC_VERSION_MAJOR >= RSSDK_BGS_FREQ_MAJ_VERSION
-			if (ImGui::SliderInt("BGS frame skip interval", &mOptions.frameSkipInterval, 0, 4 /* limit of the BGS API*/))
-				mRSMgr.SetBGSFrameSkipInterval(mOptions.frameSkipInterval);
-			ImGui::SameLine(); ShowHelpMarker("Coarse control over the frequency at which BGS runs (0 = every frame, 1 = alternate frames, ..)");
+			const char* bgsFreqOptions[] = { "Run every frame", "Run every alternate frame", "Run once in three frames", "Run once in four frames" };
+			ImGui::Combo("BGS frequency", &mOptions.frameSkipInterval, bgsFreqOptions, IM_ARRAYSIZE(bgsFreqOptions));
+			mRSMgr.SetBGSFrameSkipInterval(mOptions.frameSkipInterval);
+			ImGui::SameLine(); ShowHelpMarker("Coarse control over the frequency at which BGS algorithm runs ");
 #endif
 
 			ImGui::SliderInt("Encoding Threshold", &mOptions.encodingThreshold, 0, 255);
@@ -1171,20 +1172,50 @@ void ChatHeads::PostStartUI()
 		ImGui::SameLine(); ShowHelpMarker("Alpha channel values of the segmented image lesser than this represent the background (fully transparent)");
 		mNetLayer.SendInterval(mOptions.nwSendInterval);
 
-		static ImVector<float> bytesSent; if (bytesSent.empty()) { bytesSent.resize(90); memset(bytesSent.Data, 0, bytesSent.Size*sizeof(float)); }
-		static float avgBytesSent = 0.0f;
-		static int sentOffset = 0;
-		bytesSent[sentOffset] = static_cast<float> (mNetLayer.GetBytesSentInLastSecond());
-		std::string lastSentText = std::to_string(bytesSent[sentOffset] / 1000.0f).append(" KB/s");
-		sentOffset = (sentOffset + 1) % bytesSent.Size;
-		ImGui::PlotHistogram("Sent: KB/s", bytesSent.Data, bytesSent.Size, sentOffset, lastSentText.c_str(), 0.0f, 1024 * 300 /*300 KB*/, ImVec2(0, 80));
+		{
+			static ImVector<float> bytesSent; if (bytesSent.empty()) { bytesSent.resize(90); memset(bytesSent.Data, 0, bytesSent.Size*sizeof(float)); }
+			static float totalBytesSent = 0.0f;
+			static int sendIndex = 0;
 
-		static ImVector<float> bytesRcvd; if (bytesRcvd.empty()) { bytesRcvd.resize(90); memset(bytesRcvd.Data, 0, bytesRcvd.Size*sizeof(float)); }
-		static int rcvdOffset = 0;
-		bytesRcvd[rcvdOffset] = static_cast<float> (mNetLayer.GetBytesRcvdInLastSecond());
-		std::string lastRcvdText = std::to_string(bytesRcvd[rcvdOffset] / 1000.0f).append(" KB/s");
-		rcvdOffset = (rcvdOffset + 1) % bytesRcvd.Size;
-		ImGui::PlotHistogram("Rcvd: KB/s", bytesRcvd.Data, bytesRcvd.Size, rcvdOffset, lastRcvdText.c_str(), 0.0f, 1024 * 300 /*300 KB*/, ImVec2(0, 80));
+			bytesSent[sendIndex] = static_cast<float> (mNetLayer.GetBytesSentInLastSecond());
+			totalBytesSent += bytesSent[sendIndex];
+			sendIndex = (sendIndex + 1) % bytesSent.Size;
+
+			float avgBytesSent = 0;
+			if (sendIndex == 0)
+			{
+				totalBytesSent = bytesSent[bytesSent.Size - 1]; // reset
+				avgBytesSent = totalBytesSent;
+			}
+			else
+				avgBytesSent = totalBytesSent / (float)sendIndex;
+
+			std::string avgSentText = std::to_string(int(avgBytesSent / 1000)).append(" KB/s");
+
+			ImGui::PlotHistogram("Sent: KB/s", bytesSent.Data, bytesSent.Size, sendIndex, avgSentText.c_str(), 0.0f, 1024 * 300 /*300 KB*/, ImVec2(0, 80));
+		}
+
+		{
+			static ImVector<float> bytesRcvd; if (bytesRcvd.empty()) { bytesRcvd.resize(90); memset(bytesRcvd.Data, 0, bytesRcvd.Size*sizeof(float)); }
+			static float totalBytesRcvd = 0.0f;
+			static int rcvdIndex = 0;
+
+			bytesRcvd[rcvdIndex] = static_cast<float> (mNetLayer.GetBytesRcvdInLastSecond());
+			totalBytesRcvd += bytesRcvd[rcvdIndex];
+			rcvdIndex = (rcvdIndex + 1) % bytesRcvd.Size;
+
+			float avgBytesRcvd = 0;
+			if (rcvdIndex == 0)
+			{
+				totalBytesRcvd = bytesRcvd[bytesRcvd.Size - 1];
+				avgBytesRcvd = totalBytesRcvd;
+			}
+			else
+				avgBytesRcvd = totalBytesRcvd / (float)rcvdIndex;
+						
+			std::string avgRcvdText = std::to_string(int(avgBytesRcvd / 1000)).append(" KB/s");
+			ImGui::PlotHistogram("Rcvd: KB/s", bytesRcvd.Data, bytesRcvd.Size, rcvdIndex, avgRcvdText.c_str(), 0.0f, 1024 * 300 /*300 KB*/, ImVec2(0, 80));
+		}
 	}
 
 	SystemMetricsUI();
@@ -1225,10 +1256,22 @@ void ChatHeads::SystemMetricsUI()
 
 		static ImVector<float> cpuUsed; if (cpuUsed.empty()) { cpuUsed.resize(90); memset(cpuUsed.Data, 0, cpuUsed.Size*sizeof(float)); }
 		static int cuId = 0;
-		double curCPUUsed = CPUUsed();
-		cpuUsed[cuId] = (float)curCPUUsed;
+		static float totalCPUPercUsage = 0;
+		float avgCPUPercUsage = 0;
+
+		cpuUsed[cuId] = (float)CPUUsed();
 		cuId = (cuId + 1) % cpuUsed.Size;
-		ImGui::PlotHistogram("CPU Used", cpuUsed.Data, cpuUsed.Size, cuId, std::to_string(curCPUUsed).c_str(), 0.0f, 100.0f, ImVec2(0, 80));
+		totalCPUPercUsage += cpuUsed[cuId];		
+
+		if (cuId == 0)
+		{
+			totalCPUPercUsage = cpuUsed[cpuUsed.Size - 1];
+			avgCPUPercUsage = totalCPUPercUsage;
+		}
+		else
+			avgCPUPercUsage = totalCPUPercUsage / (float)cuId;
+
+		ImGui::PlotHistogram("CPU Used", cpuUsed.Data, cpuUsed.Size, cuId, std::to_string(int(avgCPUPercUsage)).append(" %").c_str(), 0.0f, 100.0f, ImVec2(0, 80));
 	}
 
 
@@ -1238,20 +1281,24 @@ void ChatHeads::SystemMetricsUI()
 		ImGui::Text("Physical memory used  : %lu MB", PhysicalMemoryUsedByProcess() >> 20);
 		ImGui::Text("Virtual memory total  : %lu MB ", VirtualMemoryUsedByProcess() >> 20);
 
-		static ULONGLONG lastTick = 0;
 		static ImVector<float> cpuUsedProc; if (cpuUsedProc.empty()) { cpuUsedProc.resize(90); memset(cpuUsedProc.Data, 0, cpuUsedProc.Size*sizeof(float)); }
 		static int cuId = 0;
-		static double CPUPercUsage;
-
-		ULONGLONG curTick = GetTickCount64();
-		if (curTick - lastTick > 100) // update every 100 ms
-		{
-			CPUPercUsage = CPUUsedByProcess();
-			cpuUsedProc[cuId] = (float)CPUPercUsage;
-			cuId = (cuId + 1) % cpuUsedProc.Size;
-		}
+		static float totalCPUPercUsage = 0;
+		float avgCPUPercUsage = 0;
 		
-		ImGui::PlotHistogram("CPU Used", cpuUsedProc.Data, cpuUsedProc.Size, cuId, std::to_string(CPUPercUsage).c_str(), 0.0f, 100.0f, ImVec2(0, 80));
+		cpuUsedProc[cuId] = (float)CPUUsedByProcess();
+		totalCPUPercUsage += cpuUsedProc[cuId];
+		cuId = (cuId + 1) % cpuUsedProc.Size;
+
+		if (cuId == 0)
+		{
+			totalCPUPercUsage = cpuUsedProc[cpuUsedProc.Size - 1];
+			avgCPUPercUsage = totalCPUPercUsage;
+		}
+		else
+			avgCPUPercUsage = totalCPUPercUsage / (float)cuId;
+		
+		ImGui::PlotHistogram("CPU Used", cpuUsedProc.Data, cpuUsedProc.Size, cuId, std::to_string(int(avgCPUPercUsage)).append(" %").c_str(), 0.0f, 100.0f, ImVec2(0, 80));
 	}
 
 	ImGui::End();

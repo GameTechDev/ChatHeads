@@ -136,7 +136,7 @@ HRESULT CPUTRenderTargetColor::CreateRenderTarget(
     
     // Create non-MSAA texture.  If we're MSAA, then we'll resolve into this.  If not, then we'll render directly to this one.
 
-	// ensure the texture is cleared; fixme: won't work for anything that is 
+	// ensure the texture is cleared; fixme
 	D3D11_SUBRESOURCE_DATA subresource;
 	byte *pData = new byte[mWidth * mHeight * 4];
 	memset(pData, 0, mWidth * mHeight * 4);
@@ -145,6 +145,14 @@ HRESULT CPUTRenderTargetColor::CreateRenderTarget(
 	subresource.SysMemSlicePitch = mWidth * mHeight * 4;
 
     mColorDesc.SampleDesc.Count = 1;
+	
+	if (recreate)
+	{
+		mpColorTextureDX->Release();
+		mpColorSRV->Release();
+		if (createUAV) mpColorUAV->Release();		
+	}
+
 	result = pD3dDevice->CreateTexture2D(&mColorDesc, &subresource, &mpColorTextureDX);
     ASSERT( SUCCEEDED(result), "Failed creating render target texture" );
 
