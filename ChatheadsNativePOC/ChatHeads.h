@@ -61,7 +61,7 @@ public:
 	bool			bPauseBGS = false;
 	float			chatHeadSize[2]; // wrt 100 units as full screen
 	float			chatHeadPos[2]; // wrt 100 units & (0,0) being top left
-	int 			nwSendInterval = 10; // ms
+	int 			nwSendInterval = 30; // ms
 	bool			bVsync = true; // interval = 1 for swapchain->present
 };
 

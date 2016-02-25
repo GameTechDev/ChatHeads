@@ -466,8 +466,7 @@ void ChatHeads::ReleaseRSResources()
 }
 
 
-// Create render target textures for the maximum # of players.
-// TODO: If the stream size changes, these might have to be recreated
+// Create render target textures for the maximum # of players using a default size
 void ChatHeads::CreateDefaultChatheadResources()
 {
 	using namespace std;
@@ -526,7 +525,8 @@ void ChatHeads::CreateDefaultChatheadResources()
 
 
 // Check if remote data buffer(s) and texture resource(s) need to be resized
-// Note: This HAS to execute on the main thread. Thank you DX11.
+// Note: DX11 lets you create resources on multiple threads (i.e. calls using D3DDevice are thread safe), but
+// we can't have the texture resource re-created on another thread, while it is used for drawing here.
 void ChatHeads::RecreateRemoteResourcesIfNeedBe()
 {
 	int rcIndex = 0;
@@ -1122,10 +1122,10 @@ void ChatHeads::PostStartUI()
 			mRSMgr.PauseBGS(mOptions.bPauseBGS);
 
 #if PXC_VERSION_MAJOR >= RSSDK_BGS_FREQ_MAJ_VERSION
-			const char* bgsFreqOptions[] = { "Run every frame", "Run every alternate frame", "Run once in three frames", "Run once in four frames" };
+			const char* bgsFreqOptions[] = { "Run every frame", "Run every alternate frame", "Run once in three frames", "Run once in four frames" , "Run once in five frames"};
 			ImGui::Combo("BGS frequency", &mOptions.frameSkipInterval, bgsFreqOptions, IM_ARRAYSIZE(bgsFreqOptions));
 			mRSMgr.SetBGSFrameSkipInterval(mOptions.frameSkipInterval);
-			ImGui::SameLine(); ShowHelpMarker("Coarse control over the frequency at which BGS algorithm runs ");
+			ImGui::SameLine(); ShowHelpMarker("Coarse control over the frequency at which BGS algorithm runs. SDK allows to skip at most four frames.");
 #endif
 
 			ImGui::SliderInt("Encoding Threshold", &mOptions.encodingThreshold, 0, 255);
